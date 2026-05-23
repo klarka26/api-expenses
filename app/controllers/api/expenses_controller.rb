@@ -59,7 +59,7 @@ class Api::ExpensesController < Api::BaseController
 
   # POST novy vydavok
   def create
-    supplier = Supplier.find_or_create_by(supplier_params)
+    supplier = Supplier.find_or_create(supplier_params)
     expense = current_user.expenses.new(expense_params.except(:supplier))
     expense.supplier = supplier
 
@@ -75,7 +75,7 @@ class Api::ExpensesController < Api::BaseController
   def update
     @expense.expense_items.destroy_all
 
-    supplier = Supplier.find_or_create_by(supplier_params)
+    supplier = Supplier.find_or_create(supplier_params)
     @expense.supplier = supplier
 
     if @expense.update(expense_items_params)
