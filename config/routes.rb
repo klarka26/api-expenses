@@ -14,9 +14,10 @@ Rails.application.routes.draw do
     resources :expenses do
       collection do
         get "receipt/:uid", to: "expenses#receipt"
-        post "/decode_bysquare", to: "expenses#decode_bysquare"
       end
     end
+
+    post "/decode_bysquare", to: "expenses#decode_bysquare"
 
     resource :profile, only: [:show, :update]
     resources :suppliers, only: [:index, :show]
