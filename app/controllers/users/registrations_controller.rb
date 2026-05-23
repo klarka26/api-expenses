@@ -16,8 +16,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def respond_with(resource, _opts = {})
     if resource.persisted?
+      token = request.env["warden-jwt_auth.token"]
+
       render json: {
         message: "Používateľ úspešne vytvorený.",
+        token: token,
         user: resource.as_json(only: [ :id, :email, :first_name, :last_name, :role ])
       }, status: :created
     else
