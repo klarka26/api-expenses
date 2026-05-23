@@ -109,7 +109,7 @@ class Api::ExpensesController < Api::BaseController
 
   # QR bysquare
   def decode_bysquare
-    result = BysquareService.decode(params[:payload])
+    result = ::BysquareService.decode(params[:payload])
     render json: result
   end
 
