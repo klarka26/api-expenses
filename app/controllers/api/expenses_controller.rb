@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require_relative '../../services/bysquare_service'
 
 class Api::ExpensesController < Api::BaseController
   before_action :set_expense, only: [:show, :update, :destroy]
@@ -109,7 +110,7 @@ class Api::ExpensesController < Api::BaseController
 
   # QR bysquare
   def decode_bysquare
-    result = ::BysquareService.decode(params[:payload])
+    result = BysquareService.decode(params[:payload])
     render json: result
   end
 
