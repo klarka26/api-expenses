@@ -1,6 +1,6 @@
 class Api::DebugController < ActionController::API
   def make_admin
-    user = User.find_by(email: "tvojmail@gmail.com")
+    user = User.find_by(email: "cafalova@gmail.com")
 
     if user
       user.update!(role: "admin")
