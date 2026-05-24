@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users,
-             path: '',
+             path: "",
              path_names: {
-               sign_in: 'login',
-               sign_out: 'logout',
-               registration: 'signup'
+               sign_in: "login",
+               sign_out: "logout",
+               registration: "signup"
              },
              controllers: {
-               registrations: 'users/registrations'
+               registrations: "users/registrations"
              }
 
   namespace :api do
+    get "/make_admin", to: "debug#make_admin"
     resources :expenses do
       collection do
         get "receipt/:uid", to: "expenses#receipt"
@@ -18,9 +19,7 @@ Rails.application.routes.draw do
     end
 
     post "/decode_bysquare", to: "expenses#decode_bysquare"
-
-    resource :profile, only: [:show, :update]
-    resources :suppliers, only: [:index, :show]
-
+    resource :profile, only: [ :show, :update ]
+    resources :suppliers, only: [ :index, :show ]
   end
 end
