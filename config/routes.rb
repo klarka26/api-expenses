@@ -11,7 +11,6 @@ Rails.application.routes.draw do
              }
 
   namespace :api do
-    get "/make_admin", to: "debug#make_admin"
     resources :expenses do
       collection do
         get "receipt/:uid", to: "expenses#receipt"
