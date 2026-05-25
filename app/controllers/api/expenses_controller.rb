@@ -90,7 +90,7 @@ class Api::ExpensesController < Api::BaseController
   # DESTROY zmazanie vydavku
   def destroy
     if current_user.admin?
-      @expense.update!(hidden_from_admin: true)
+      current_user.hidden_expenses.find_or_create_by!(expense: @expense)
       head :ok
     else
       @expense.destroy

@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   def accessible_expenses
     if admin?
-      Expense.where(hidden_from_admin: false)
+      Expense.where.not(id: hidden_expenses.select(:expense_id))
     else
       expenses
     end
