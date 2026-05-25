@@ -89,8 +89,13 @@ class Api::ExpensesController < Api::BaseController
 
   # DESTROY zmazanie vydavku
   def destroy
-    @expense.destroy
-    head :no_content
+    if current_user.admin?
+      current_user.expenses.delete(@expense)
+      head :ok
+    else
+      @expense.destroy
+      head :no_content
+    end
   end
 
   # QR ekasa
