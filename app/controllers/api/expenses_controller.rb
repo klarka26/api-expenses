@@ -90,13 +90,14 @@ class Api::ExpensesController < Api::BaseController
   # DESTROY zmazanie vydavku
   def destroy
     if current_user.admin?
-      current_user.expenses.delete(@expense)
+      @expense.update!(hidden_from_admin: true)
       head :ok
     else
       @expense.destroy
       head :no_content
     end
   end
+
 
   # QR ekasa
   def receipt

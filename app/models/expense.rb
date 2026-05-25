@@ -2,6 +2,7 @@ class Expense < ApplicationRecord
   belongs_to :user
   belongs_to :supplier
   has_many :expense_items, dependent: :destroy
+  has_many :hidden_expenses, dependent: :destroy
 
   accepts_nested_attributes_for :expense_items, allow_destroy: true
 
