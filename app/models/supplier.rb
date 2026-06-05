@@ -28,7 +28,7 @@ class Supplier < ApplicationRecord
         end
       end
 
-      # ak sa udaje zhoduju alebo su prazdene, tak sa aktualizuje
+      # ak sa udaje zhoduju alebo su prazdne, tak sa aktualizuje
       unless conflict
         supplier.name    = data[:name]    if supplier.name.blank? && data[:name].present?
         supplier.dic     = data[:dic]     if supplier.dic.blank? && data[:dic].present?
