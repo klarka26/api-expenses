@@ -41,15 +41,7 @@ class Api::ExpensesController < Api::BaseController
     render json: @expense.as_json(
       include: {
         supplier: {},
-        expense_items: {},
-
-        user: {
-          only: [
-            :email,
-            :first_name,
-            :last_name
-          ]
-        }
+        expense_items: {}
       }
     )
   end
