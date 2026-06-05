@@ -3,7 +3,7 @@ require 'json'
 require_relative '../../services/bysquare_service'
 
 class Api::ExpensesController < Api::BaseController
-  before_action :set_expense, only: [:show, :update, :destroy]
+  before_action :set_expense, only: [ :show, :update, :destroy ]
 
   # GET vydavky
   def index
@@ -31,10 +31,6 @@ class Api::ExpensesController < Api::BaseController
             :first_name,
             :last_name
           ]
-        },
-
-        expense_items: {
-          only: [:description]
         }
       }
     )
@@ -82,7 +78,7 @@ class Api::ExpensesController < Api::BaseController
     if @expense.update(expense_items_params)
       render json: @expense
     else
-      render json: {errors: @expense.errors.full_messages},
+      render json: { errors: @expense.errors.full_messages },
              status: :unprocessable_entity
     end
   end
