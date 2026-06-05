@@ -9,3 +9,4 @@ class HiddenExpenses < ActiveRecord::Migration[8.0]
     add_index :hidden_expenses, [ :user_id, :expense_id ], unique: true
   end
 end
+

@@ -4,4 +4,5 @@ class ExpenseItem < ApplicationRecord
   validates :description, presence: true
   validates :quantity, numericality: { greater_than: 0 }
   validates :unit_price, numericality: true
+  validates :vat_rate, numericality: { greater_than_or_equal_to: 0 }
 end

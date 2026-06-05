@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
 
     post "/decode_bysquare", to: "expenses#decode_bysquare"
-    resource :profile, only: [ :show, :update ]
+    resource :profile, only: [ :show ]
     resources :suppliers, only: [ :index, :show ]
   end
 end

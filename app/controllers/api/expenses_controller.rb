@@ -152,7 +152,8 @@ class Api::ExpensesController < Api::BaseController
         :description,
         :quantity,
         :unit_price,
-        :total_price
+        :total_price,
+        :vat_rate
       ]
     )
   end
